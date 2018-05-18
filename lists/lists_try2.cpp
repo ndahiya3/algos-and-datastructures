@@ -13,19 +13,23 @@ struct Node {
 
 Node* head;
 
-void Delete(int n) {
-    Node* temp1 = head;
-    if(n==1){
-            head = temp1->next;
-            delete temp1;
-            return;
-        }
-    for (int i=0; i<n-2; i++){
-            temp1 = temp1->next;
-        }
-    Node* temp2 = temp1->next;
-    temp1->next = temp2->next;
-    delete temp2;
+void Delete(int n)
+{
+  Node* temp1 = head;
+
+  if (n == 1)
+    {
+      head = temp1->next;
+      delete temp1;
+      return;
+    }
+  for (int i = 0; i < n - 2; i++)
+    {
+      temp1 = temp1->next;
+    }
+  Node* temp2 = temp1->next;
+  temp1->next = temp2->next;
+  delete temp2;
 }
 
 void Insert(int data, int n)
@@ -73,6 +77,20 @@ int main()
   Insert(6, 3);
   Insert(1, 5);
   Insert(0, 7);
+  Print();
+  Delete(1);
+  Print();
+  Delete(2);
+  Print();
+  Delete(4);
+  Print();
+  Delete(4);
+  Print();
+  Delete(3);
+  Print();
+  Delete(2);
+  Print();
+  Delete(1);
   Print();
   return 0;
 }
