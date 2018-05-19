@@ -20,8 +20,11 @@ linkedListADT<T>::linkedListADT(const linkedListADT<T> &otherList) {
 template <class T>
 const linkedListADT<T> &linkedListADT<T>::
 operator=(const linkedListADT<T> &otherList) {
+
+  // Assignment operator
   if (this != otherList) // Avoid self copy
     copyList(otherList);
+  return *this;
 }
 template <class T> bool linkedListADT<T>::is_empty_list() const {
   return (count == 0);
