@@ -16,7 +16,7 @@
 
 #include "linked_list_adt.h"
 
-template <class T> class unorderedLinkList : public linkedListADT<T> {
+template <class T> class unorderedLinkedList : public linkedListADT<T> {
 public:
   bool search(const T &item) const;
   void insert_front(const T &item);

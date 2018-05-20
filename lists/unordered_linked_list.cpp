@@ -1,7 +1,7 @@
-//#include "unordered_linked_list.h"
+#include "unordered_linked_list.h"
 #include <iostream>
 
-template <class T> bool unorderedLinkList<T>::search(const T &item) const {
+template <class T> bool unorderedLinkedList<T>::search(const T &item) const {
 
   nodeS<T> *current = head;
   bool found = false;
@@ -15,7 +15,7 @@ template <class T> bool unorderedLinkList<T>::search(const T &item) const {
   return found;
 }
 
-template <class T> void unorderedLinkList<T>::insert_front(const T &item) {
+template <class T> void unorderedLinkedList<T>::insert_front(const T &item) {
   nodeS<T> *newNode = new nodeS<T>;
   newNode->data = item;
   newNode->next = head;
@@ -25,7 +25,7 @@ template <class T> void unorderedLinkList<T>::insert_front(const T &item) {
     tail = newNode;
 }
 
-template <class T> void unorderedLinkList<T>::insert_back(const T &item) {
+template <class T> void unorderedLinkedList<T>::insert_back(const T &item) {
   nodeS<T> *newNode = new nodeS<T>;
   newNode->data = item;
   newNode->next = nullptr;
@@ -41,7 +41,7 @@ template <class T> void unorderedLinkList<T>::insert_back(const T &item) {
   }
 }
 
-template <class T> void unorderedLinkList<T>::insert_at(const T &item, int n) {
+template <class T> void unorderedLinkedList<T>::insert_at(const T &item, int n) {
   if (n < 0 || n > count) {
     std::cout << "Insert index out of bounds\n";
     return;
@@ -67,7 +67,7 @@ template <class T> void unorderedLinkList<T>::insert_at(const T &item, int n) {
     tail = newNode;
 }
 
-template <class T> void unorderedLinkList<T>::delete_item(const T &item) {
+template <class T> void unorderedLinkedList<T>::delete_item(const T &item) {
 
   if (count == 0) {
     std::cout << "List is empty.\n";
@@ -107,7 +107,7 @@ template <class T> void unorderedLinkList<T>::delete_item(const T &item) {
   }
 }
 
-template <class T> void unorderedLinkList<T>::delete_front() {
+template <class T> void unorderedLinkedList<T>::delete_front() {
 
   if (head == nullptr) {
     std::cout << "List is empty\n";
@@ -122,7 +122,7 @@ template <class T> void unorderedLinkList<T>::delete_front() {
   delete temp;
 }
 
-template <class T> void unorderedLinkList<T>::delete_back() {
+template <class T> void unorderedLinkedList<T>::delete_back() {
 
   if (head == nullptr) {
     std::cout << "List is empty\n";
@@ -149,7 +149,7 @@ template <class T> void unorderedLinkList<T>::delete_back() {
   count--;
 }
 
-template <class T> void unorderedLinkList<T>::delete_at(int n) {
+template <class T> void unorderedLinkedList<T>::delete_at(int n) {
 
   if (head == nullptr) {
     std::cout << "List is empty\n";
