@@ -41,7 +41,8 @@ template <class T> void unorderedLinkedList<T>::insert_back(const T &item) {
   }
 }
 
-template <class T> void unorderedLinkedList<T>::insert_at(const T &item, int n) {
+template <class T>
+void unorderedLinkedList<T>::insert_at(const T &item, int n) {
   if (n < 0 || n > count) {
     std::cout << "Insert index out of bounds\n";
     return;
@@ -55,6 +56,7 @@ template <class T> void unorderedLinkedList<T>::insert_at(const T &item, int n) 
     head = newNode;
     if (tail == nullptr) // list was empty, now head == tail
       tail = newNode;
+    count++;
     return;
   }
 
@@ -65,6 +67,7 @@ template <class T> void unorderedLinkedList<T>::insert_at(const T &item, int n) 
   current->next = newNode;
   if (current == tail)
     tail = newNode;
+  count++;
 }
 
 template <class T> void unorderedLinkedList<T>::delete_item(const T &item) {
@@ -144,6 +147,7 @@ template <class T> void unorderedLinkedList<T>::delete_back() {
     trailCurrent = current;
     current = current->next;
   }
+  trailCurrent->next = current->next;
   tail = trailCurrent;
   delete current;
   count--;
@@ -151,30 +155,26 @@ template <class T> void unorderedLinkedList<T>::delete_back() {
 
 template <class T> void unorderedLinkedList<T>::delete_at(int n) {
 
-  if (head == nullptr) {
-    std::cout << "List is empty\n";
-    return;
-  }
   if (n < 0 || n > (count - 1)) {
     std::cout << "Index out of range\n";
     return;
   }
 
-  nodeS<T> *temp = head;
   if (n == 0) {
-    head = head->next;
-    delete temp;
-    count--;
-    if (head = nullptr) // There was only one element in list
-      tail = nullptr;
+    delete_front();
     return;
   }
-  for (int i = 0; i < n - 1; i++) // Go to trailing node
-    temp = temp->next;
 
-  nodeS<T> *current = temp->next; // Node to delete
-  if (current = tail)             // Node to delete is last node; adjust tail
-    tail = temp;
+  nodeS<T> *trailCurrent = head;
+  for (int i = 0; i < n - 1; i++) // Go to trailing node
+    trailCurrent = trailCurrent->next;
+
+  nodeS<T> *current = trailCurrent->next; // Node to delete
+  trailCurrent->next =
+      current->next; // Adjust link (jump over the node to delete)
+
+  if (current == tail) // Node to delete is last node; adjust tail
+    tail = trailCurrent;
   delete current;
   count--;
 }
