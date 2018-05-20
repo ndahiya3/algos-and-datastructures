@@ -33,7 +33,7 @@ public:
   virtual bool search(const T &item) const = 0; // search a given item in list
   virtual void insert_front(const T &item) = 0; // insert item at front of list
   virtual void insert_back(const T &item) = 0;  // insert item at last of list
-  virtual bool insert_at(const T &item,
+  virtual void insert_at(const T &item,
                          int n) = 0;           // insert item at nth position
   virtual void delete_item(const T &item) = 0; // delete item if found
   virtual void delete_front() = 0;             // delete first item
