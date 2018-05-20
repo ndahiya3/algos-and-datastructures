@@ -37,7 +37,7 @@ public:
                          int n) = 0;           // insert item at nth position
   virtual void delete_item(const T &item) = 0; // delete item if found
   virtual void delete_front() = 0;             // delete first item
-  virtual void delete_last() = 0;              // delete last item
+  virtual void delete_back() = 0;              // delete last item
   virtual void delete_at(int n) = 0;           // delete item at index n
 
   linkedListIterator<T> begin(); // return iterator at the beginning of list
