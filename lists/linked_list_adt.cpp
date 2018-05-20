@@ -17,12 +17,14 @@ linkedListADT<T>::linkedListADT(const linkedListADT<T> &otherList) {
   copyList(otherList);
 }
 
+template <class T> linkedListADT<T>::~linkedListADT() { destroy_list(); }
+
 template <class T>
 const linkedListADT<T> &linkedListADT<T>::
 operator=(const linkedListADT<T> &otherList) {
 
   // Assignment operator
-  if (this != otherList) // Avoid self copy
+  if (this != &otherList) // Avoid self copy
     copyList(otherList);
   return *this;
 }
