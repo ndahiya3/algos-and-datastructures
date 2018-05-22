@@ -1,6 +1,7 @@
 // This program tests various operation of a linked list
 // 34 62 21 90 66 53 88 24 10 -999
 
+#include "reverse_linked_list.h"
 #include "unordered_linked_list.h" //Line 2
 #include <iostream>                //Line 1
 
@@ -132,9 +133,71 @@ void test_delete() {
     list1.print();
   }
 }
+
+void test_reverse_print() {
+  // Test reversing linked list class
+  reverseLinkedList<int> list1;
+  int num = 10;
+  int num_to_insert[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+  //  for (int i = 0; i < num; i++)
+  //    list1.insert_front(num_to_insert[i]);
+  //  list1.print();
+  list1.insert_front(5);
+  list1.insert_back(10);
+  list1.print();
+  list1.print_reverse();
+}
+
+void test_reverse() {
+  reverseLinkedList<int> list1;
+  int num = 10;
+  int num_to_insert[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+  list1.insert_front(10);
+  list1.insert_front(20);
+  list1.reverse_list_iter();
+  list1.print();
+
+  //  for (int i = 0; i < num; i++)
+  //    list1.insert_front(num_to_insert[i]);
+  //  list1.print();
+
+  //  list1.reverse_list_iter();
+  //  list1.print();
+}
+
+void test_reverse_recursive() {
+  reverseLinkedList<int> list1;
+  int num = 10;
+  int num_to_insert[10] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+
+  //  list1.insert_front(10);
+  //  list1.insert_front(20);
+  //  list1.reverse_list_recursion();
+  //  list1.print();
+
+  for (int i = 0; i < num; i++)
+    list1.insert_front(num_to_insert[i]);
+  list1.print();
+
+  list1.reverse_list_recursion();
+  list1.print();
+
+  linkedListIterator<int> it; // Line 34
+
+  for (it = list1.begin(); it != list1.end(); ++it) // Line 35
+    cout << *it << " ";                             // Line 36
+  cout << endl;                                     // Line 37
+}
+
 int main() {
   // test_insert();
-  test_delete();
+  // test_delete();
+  // test_reverse_print();
+  // test_reverse();
+  test_reverse_recursive();
+
   return 0;
 }
 
