@@ -22,7 +22,7 @@
 template <class T>
 class unorderedDoublyLinkedList : public doublyLinkedListADT<T> {
 public:
-  void search(const T &item) const;
+  bool search(const T &item) const;
   void insert_front(const T &item); // Insert item at front of list
   void insert_back(const T &item);  // Insert item at end of list
   void insert_at(const T &item,
@@ -31,6 +31,11 @@ public:
   void delete_front();             // Delete first item
   void delete_back();              // Delete last item
   void delete_at(int n);           // Delete item at index n
-}
+
+protected:
+  using doublyLinkedListADT<T>::head;
+  using doublyLinkedListADT<T>::tail;
+  using doublyLinkedListADT<T>::count;
+};
 #include "unordered_doubly_linked_list.cpp"
 #endif // UNORDERED_DOUBLY_LINKED_LIST_H

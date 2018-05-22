@@ -20,7 +20,7 @@ doublyLinkedListADT<T>::doublyLinkedListADT(
 template <class T> doublyLinkedListADT<T>::~doublyLinkedListADT() { clear(); }
 
 template <class T>
-doublyLinkedListADT<T> &doublyLinkedListADT<T>::
+const doublyLinkedListADT<T> &doublyLinkedListADT<T>::
 operator=(const doublyLinkedListADT<T> &otherList) {
 
   // Assignment operator

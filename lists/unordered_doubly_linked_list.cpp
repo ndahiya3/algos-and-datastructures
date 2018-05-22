@@ -17,11 +17,17 @@ template <class T>
 void unorderedDoublyLinkedList<T>::insert_front(const T &item) {
   nodeD<T> *newNode = new nodeD<T>;
   newNode->data = item;
-  newNode->next = head; // If list was empty then head should be null
+  newNode->next = nullptr;
   newNode->prev = nullptr;
-  head = newNode;
-  if (tail == nullptr) // If list was empty then tail should be null
+
+  if (head == nullptr) { // Empty list
+    head = newNode;
     tail = newNode;
+  } else {
+    newNode->next = head;
+    head->prev = newNode; // Handles case of only 1 when where head == tail
+    head = newNode;
+  }
   count++;
 }
 
@@ -30,10 +36,16 @@ void unorderedDoublyLinkedList<T>::insert_back(const T &item) {
   nodeD<T> *newNode = new nodeD<T>;
   newNode->data = item;
   newNode->next = nullptr;
-  newNode->prev = tail; // If the list was empty then tail should be null
-  tail = newNode;
-  if (head == nullptr) // If list was empty then head should be null
+  newNode->prev = nullptr;
+
+  if (head == nullptr) {
     head = newNode;
+    tail = newNode;
+  } else {
+    newNode->prev = tail;
+    tail->next = newNode;
+    tail = newNode;
+  }
   count++;
 }
 
@@ -130,7 +142,8 @@ template <class T> void unorderedDoublyLinkedList<T>::delete_at(int n) {
   count--;
 }
 
-template <class T> void doublyLinkedListADT<T>::delete_item(const T &item) {
+template <class T>
+void unorderedDoublyLinkedList<T>::delete_item(const T &item) {
 
   if (head == nullptr)
     std::cout << "List is empty." << std::endl;

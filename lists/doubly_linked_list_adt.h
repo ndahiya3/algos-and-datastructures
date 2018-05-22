@@ -28,15 +28,15 @@ public:
   const doublyLinkedListADT<T> &
   operator=(const doublyLinkedListADT<T> &otherList); // Assignment operator
 
-  T front() const;      // Return first element of the list
-  T back() const;       // Return last elements of the list
-  bool is_empty();      // Check if the list is empty
-  int length();         // Number of elements in the list
-  void clear();         // Destroy the list
-  void print();         // Print list in forward direction
-  void print_reverse(); // Print list in reverse direction
+  T front() const;            // Return first element of the list
+  T back() const;             // Return last elements of the list
+  bool is_empty() const;      // Check if the list is empty
+  int length() const;         // Number of elements in the list
+  void clear();               // Destroy the list
+  void print() const;         // Print list in forward direction
+  void print_reverse() const; // Print list in reverse direction
 
-  virtual void search(const T &item) const = 0; // Search a given item in list
+  virtual bool search(const T &item) const = 0; // Search a given item in list
   virtual void insert_front(const T &item) = 0; // Insert item at front of list
   virtual void insert_back(const T &item) = 0;  // Insert item at end of list
   virtual void insert_at(const T &item,
@@ -57,4 +57,5 @@ private:
   void copyList(const doublyLinkedListADT<T>
                     &otherList); // copy other list and assign to this list
 };
+#include "doubly_linked_list_adt.cpp"
 #endif // DOUBLY_LINKED_LIST_ADT_H

@@ -27,12 +27,12 @@ doublyLinkedListIterator<T> doublyLinkedListIterator<T>::operator--() {
 
 template <class T>
 bool doublyLinkedListIterator<T>::
-operator==(const doublyLinkedListIterator<T> &right) {
+operator==(const doublyLinkedListIterator<T> &right) const {
   return (current == right.current);
 }
 
 template <class T>
 bool doublyLinkedListIterator<T>::
-operator!=(const doublyLinkedListIterator<T> &right) {
+operator!=(const doublyLinkedListIterator<T> &right) const {
   return (current != right.current);
 }
