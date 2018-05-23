@@ -7,6 +7,8 @@
  * Implements:
  * initialize_stack       O(1)
  * is_empty               O(1)
+ * capacity               O(1)
+ * size                   O(1)
  * push                   O(1)
  * pop                    O(1)
  * top                    O(1)
@@ -21,6 +23,8 @@ template <class T> class arrayStack : public stackADT<T> {
 public:
   void initialize_stack();       // Initialize empty stack
   bool is_empty() const;         // Determine if stack is empty
+  int capacity() const;          // Current max capacity of stack
+  int size() const;              // Current size of stack
   void push(const T &data);      // Push element on stack
   void pop();                    // Remove top element
   T top() const;                 // Return top element without removing
@@ -36,6 +40,7 @@ private:
   T *list;          // Pointer to array that holds stack data
   void copyStack(const arrayStack<T>
                      &otherStack); // Copy other stack and assign to this stack
+  void resizeStack(int new_size);  // Resize stack
 };
 #include "array_stack.cpp"
 #endif // ARRAY_STACK_H
