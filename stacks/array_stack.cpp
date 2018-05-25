@@ -1,4 +1,4 @@
-//#include "array_stack.h"
+#include "array_stack.h"
 #include <assert.h>
 
 template <class T> arrayStack<T>::arrayStack(int maxSize) {
@@ -66,4 +66,18 @@ template <class T> void arrayStack<T>::resizeStack(int new_size) {
   delete[] list;
   list = new_array;
   maxStackSize = new_size;
+}
+
+template <class T>
+void arrayStack<T>::copyStack(const arrayStack<T> &otherStack) {
+  initialize_stack();
+  if (otherStack.is_empty())
+    return;
+  maxStackSize = otherStack.maxStackSize;
+  stackTop = otherStack.stackTop;
+  delete[] list;
+  list = new T[maxStackSize];
+
+  for (int i = 0; i <= stackTop; i++)
+    list[i] = otherStack.list[i];
 }
