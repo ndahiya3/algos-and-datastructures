@@ -5,7 +5,7 @@
  * derived from stack ADT base class.
  *
  * Implements:
- * initialize_stack       O(1)
+ * initialize_stack       O(n)
  * is_empty               O(1)
  * capacity               O(1)
  * size                   O(1)
@@ -15,7 +15,7 @@
  * Assignment             O(n)
  * Default constructor    O(1)
  * Copy constructor       O(n)
- * Destructor             O(1)
+ * Destructor             O(n)
  */
 
 #include "stack_adt.h"
