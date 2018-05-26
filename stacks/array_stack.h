@@ -1,7 +1,7 @@
 #ifndef ARRAY_STACK_H
 #define ARRAY_STACK_H
 /*
- * Array based stack implementation derived from satck ADT
+ * Array based stack implementation derived from stack ADT
  * base class.
  *
  * Implements:
