@@ -17,6 +17,10 @@ public:
   operator=(const binaryTreeADT<T> &otherTree); // Assignment operator
   ~binaryTreeADT();                             // Destructor
 
+  virtual bool search(const T &item) const = 0; // Search item in tree
+  virtual void insert(const T &item) = 0;       // Insert item in tree
+  virtual void delete_item(const T &item) = 0;  // Delete item from tree
+
   bool is_empty() const; // Check if tree is empty
 
   void inorder_traversal() const;   // Left sub-tree, Node, Right sub-tree
@@ -45,4 +49,6 @@ private:
   int node_count(nodeBT<T> *p) const; // Number of nodes of tree pointed to by p
   int leaves_count(nodeBT<T> *p) const; // Number of leaves of tree with root p;
 };
+#include "binary_tree_adt.cpp"
+
 #endif // BIANRY_TREE_ADT_H
