@@ -34,14 +34,17 @@ template <class T> bool binaryTreeADT<T>::is_empty() const {
 
 template <class T> void binaryTreeADT<T>::inorder_traversal() const {
   inorder(root);
+  std::cout << std::endl;
 }
 
 template <class T> void binaryTreeADT<T>::preorder_traversal() const {
   preorder(root);
+  std::cout << std::endl;
 }
 
 template <class T> void binaryTreeADT<T>::postorder_traversal() const {
   postorder(root);
+  std::cout << std::endl;
 }
 
 template <class T> int binaryTreeADT<T>::tree_height() const {

@@ -13,7 +13,7 @@
 
 #include "binary_tree_adt.h"
 
-template <class T> class binarySearchTree {
+template <class T> class binarySearchTree : public binaryTreeADT<T> {
 public:
   bool search(const T &item) const;           // Search given item in tree
   bool search_recursive(const T &item) const; // Recursive search
@@ -22,9 +22,10 @@ public:
 
 private:
   void delete_node(nodeBT<T> *&p); // Delete node pointed to by p
-  void search_recursive(nodeBT<T> *p, const T &item) const;
+  bool search_recursive(nodeBT<T> *p, const T &item) const;
 
 protected:
   using binaryTreeADT<T>::root;
 };
+#include "binary_search_tree.cpp"
 #endif // BINARY_SEARCH_TREE_H

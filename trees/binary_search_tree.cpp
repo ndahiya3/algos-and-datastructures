@@ -11,7 +11,7 @@ template <class T> bool binarySearchTree<T>::search(const T &item) const {
     while (current != nullptr && !found) {
       if (current->data == item)
         found = true;
-      else if (current->data < item)
+      else if (current->data > item)
         current = current->left;
       else
         current = current->right;
