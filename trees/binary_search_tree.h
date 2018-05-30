@@ -19,6 +19,8 @@ public:
   bool search_recursive(const T &item) const; // Recursive search
   void insert(const T &item);                 // Insert given item in tree
   void delete_item(const T &item);            // Delete given item from tree
+  T min_element() const;                      // Find minimum element in tree
+  T max_element() const;                      // Find maximum element in tree
 
 private:
   void delete_node(nodeBT<T> *&p); // Delete node pointed to by p

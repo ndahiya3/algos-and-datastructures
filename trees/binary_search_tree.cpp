@@ -149,3 +149,19 @@ template <class T> void binarySearchTree<T>::delete_node(nodeBT<T> *&p) {
     delete current;
   }
 }
+
+template <class T> T binarySearchTree<T>::min_element() const {
+  nodeBT<T> *current = root;
+  while (current->left != nullptr)
+    current = current->left;
+
+  return current->data;
+}
+
+template <class T> T binarySearchTree<T>::max_element() const {
+  nodeBT<T> *current = root;
+  while (current->right != nullptr)
+    current = current->right;
+
+  return current->data;
+}
