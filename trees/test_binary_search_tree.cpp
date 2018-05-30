@@ -2,6 +2,40 @@
 #include <iostream>
 using namespace std;
 
+void test_levelorder_traversal() {
+  /*
+   *              Input Tree
+   *                 F
+   *               /   \
+   *              D     J
+   *             / \   / \
+   *            B   E G   K
+   *           / \     \
+   *          A   C     I
+   *                   /
+   *                  H
+   *
+   *   Level order or Breadth first traversal output:
+   *      F D J B E G K A C I H
+   */
+  binarySearchTree<char> bst;
+  bst.insert('F');
+  bst.insert('D');
+  bst.insert('J');
+  bst.insert('B');
+  bst.insert('E');
+  bst.insert('G');
+  bst.insert('K');
+  bst.insert('A');
+  bst.insert('C');
+  bst.insert('I');
+  bst.insert('H');
+
+  bst.levelorder_traversal();
+
+  cout << bst.min_element() << "  " << bst.max_element() << endl;
+}
+
 void test_bst_traversal() {
   /*
    * Input tree
@@ -104,6 +138,8 @@ void test_bst_traversal() {
 }
 
 int main() {
-  test_bst_traversal();
+  // test_bst_traversal();
+  test_levelorder_traversal();
+
   return 0;
 }
