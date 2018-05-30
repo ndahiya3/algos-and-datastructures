@@ -47,6 +47,25 @@ template <class T> void binaryTreeADT<T>::postorder_traversal() const {
   std::cout << std::endl;
 }
 
+template <class T> void binaryTreeADT<T>::levelorder_traversal() const {
+  if (root == nullptr)
+    return;
+
+  linkedQueue<nodeBT<T> *> Q;
+  Q.enqueue(root);
+
+  while (!Q.is_empty()) {
+    nodeBT<T> *current = Q.front(); // Visit node
+    std::cout << current->data << " ";
+    if (current->left != nullptr) // Discover nodes
+      Q.enqueue(current->left);
+    if (current->right != nullptr)
+      Q.enqueue(current->right);
+    Q.dequeue();
+  }
+  std::cout << std::endl;
+}
+
 template <class T> int binaryTreeADT<T>::tree_height() const {
   return height(root);
 }

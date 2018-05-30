@@ -7,6 +7,7 @@
  * implemented by derived classes such as Binary Search Trees.
  */
 
+#include "linked_queue.h"
 #include "node_bt.h"
 
 template <class T> class binaryTreeADT {
@@ -23,9 +24,10 @@ public:
 
   bool is_empty() const; // Check if tree is empty
 
-  void inorder_traversal() const;   // Left sub-tree, Node, Right sub-tree
-  void preorder_traversal() const;  // Node, Left sub-tree, Right sub-tree
-  void postorder_traversal() const; // Left sub-tree, Right sub-tree, Node
+  void inorder_traversal() const;    // Left sub-tree, Node, Right sub-tree
+  void preorder_traversal() const;   // Node, Left sub-tree, Right sub-tree
+  void postorder_traversal() const;  // Left sub-tree, Right sub-tree, Node
+  void levelorder_traversal() const; // Breadth first traversal
 
   int tree_height() const;       // Get height of tree
   int tree_node_count() const;   // Number of nodes in tree
