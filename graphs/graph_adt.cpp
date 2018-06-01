@@ -15,6 +15,9 @@ void graphType::create_graph() {
   // Each line from (2nd line onwards) lists the vertex and the vertices its
   // connected to. End of data is indicated by -999
 
+  // Number of vertices assumed to be <= max_size used to create initial
+  // graph object.
+
   ifstream infile;
   char filename[FILENAME_MAX];
 
@@ -141,4 +144,7 @@ graphType::graphType(int size) {
   graph = new unorderedLinkedList<int>[max_size];
 }
 
-graphType::~graphType() { clear_graph(); }
+graphType::~graphType() {
+  clear_graph();
+  delete[] graph;
+}
