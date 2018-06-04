@@ -151,7 +151,7 @@ arrayListADT<T>::arrayListADT(const arrayListADT<T> &otherList) {
 }
 
 template <class T>
-arrayListADT<T> &arrayListADT<T>::operator=(const arrayListADT<T> &otherList) {
+const arrayListADT<T> &arrayListADT<T>::operator=(const arrayListADT<T> &otherList) {
   if (this != &otherList) { // Avoid self copy
     length = otherList.length;
     max_size = otherList.max_size;
