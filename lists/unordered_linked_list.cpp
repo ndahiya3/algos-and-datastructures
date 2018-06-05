@@ -25,6 +25,10 @@ template <class T> void unorderedLinkedList<T>::insert_front(const T &item) {
     tail = newNode;
 }
 
+template <class T> void unorderedLinkedList<T>::insert(const T &item) {
+  insert_front(item);
+}
+
 template <class T> void unorderedLinkedList<T>::insert_back(const T &item) {
   nodeS<T> *newNode = new nodeS<T>;
   newNode->data = item;

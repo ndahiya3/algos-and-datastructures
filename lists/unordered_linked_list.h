@@ -19,6 +19,7 @@
 template <class T> class unorderedLinkedList : public linkedListADT<T> {
 public:
   bool search(const T &item) const;
+  void insert(const T &item); // insert front by default
   void insert_front(const T &item);
   void insert_back(const T &item);
   void insert_at(const T &item, int n);
