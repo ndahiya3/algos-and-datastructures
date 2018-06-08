@@ -157,10 +157,11 @@ template <class T> void arrayListADT<T>::swap(int first, int second) {
 }
 
 template <class T> void arrayListADT<T>::insert(const T &item) {
-  if (seq_search(item) != -1) {
-    std::cout << "Item already in list." << std::endl;
-    return;
-  }
+  if (!is_empty())
+    if (seq_search(item) != -1) {
+      std::cout << "Item already in list." << std::endl;
+      return;
+    }
   if (length >= max_size) {
     std::cout << "List is full." << std::endl;
     return;
