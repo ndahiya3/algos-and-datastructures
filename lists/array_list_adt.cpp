@@ -1,4 +1,4 @@
-//#include "array_list_adt.h"
+#include "array_list_adt.h"
 #include <cassert>
 #include <climits>
 #include <iostream>
@@ -15,6 +15,10 @@ template <class T> int arrayListADT<T>::list_size() const { return length; }
 
 template <class T> int arrayListADT<T>::max_list_size() const {
   return max_size;
+}
+
+template <class T> bool arrayListADT<T>::is_sorted() const {
+  return (sorted == true);
 }
 
 template <class T> void arrayListADT<T>::print() const {
@@ -47,6 +51,7 @@ template <class T> void arrayListADT<T>::insert_at(int loc, const T &item) {
     // Insert at desired loc
     list[loc] = item;
     length++;
+    sorted = false;
   }
 }
 template <class T> void arrayListADT<T>::insert_end(const T &item) {
@@ -56,6 +61,7 @@ template <class T> void arrayListADT<T>::insert_end(const T &item) {
     if (length == curr_size)
       resize(2 * curr_size);
     list[length++] = item;
+    sorted = false;
   }
 }
 
@@ -84,6 +90,7 @@ template <class T> void arrayListADT<T>::replace_at(int loc, const T &item) {
     std::cout << "Location index out of bounds." << std::endl;
   else
     list[loc] = item;
+  sorted = false;
 }
 
 template <class T> void arrayListADT<T>::clear_list() {
@@ -106,6 +113,49 @@ template <class T> int arrayListADT<T>::seq_search(const T &item) const {
   return loc;
 }
 
+template <class T> void arrayListADT<T>::quick_sort() {
+  // Sort array in ascending order using quick sorrt algorithm
+  if (is_empty())
+    return;
+  rec_quick_sort(0, length - 1);
+}
+
+template <class T> void arrayListADT<T>::rec_quick_sort(int first, int last) {
+  if (first < last) {
+    int pivot_loc = partition(first, last);
+    rec_quick_sort(first, pivot_loc - 1);
+    rec_quick_sort(pivot_loc + 1, last);
+  }
+}
+
+template <class T> int arrayListADT<T>::partition(int first, int last) {
+  // Partition the array between first and last index
+  // based on comparison with pivot element. Elements
+  // smaller than pivot form left part of the array
+
+  int pivot_loc = first + (last - first) / 2;
+  swap(first, pivot_loc); // Move pivot to start of list
+  T pivot = list[first];
+  int small_index = first;
+
+  // Move elements smaller than pivot to left of list.
+  // small_index marks end of smaller part of list
+  for (int index = first + 1; index <= last; index++)
+    if (list[index] < pivot) {
+      small_index++;
+      swap(index, small_index);
+    }
+  // Move pivot back to end of smaller part of list
+  swap(first, small_index);
+  return small_index;
+}
+
+template <class T> void arrayListADT<T>::swap(int first, int second) {
+  T temp = list[first];
+  list[first] = list[second];
+  list[second] = temp;
+}
+
 template <class T> void arrayListADT<T>::insert(const T &item) {
   if (seq_search(item) != -1) {
     std::cout << "Item already in list." << std::endl;
@@ -118,6 +168,7 @@ template <class T> void arrayListADT<T>::insert(const T &item) {
   if (length == curr_size)
     resize(2 * curr_size);
   list[length++] = item;
+  sorted = false;
 }
 
 template <class T> void arrayListADT<T>::remove(const T &item) {
@@ -135,6 +186,7 @@ template <class T> arrayListADT<T>::arrayListADT(int size) {
   length = 0;
   max_size = INT_MAX;
   curr_size = size;
+  sorted = false;
 }
 
 template <class T>
@@ -144,6 +196,8 @@ arrayListADT<T>::arrayListADT(const arrayListADT<T> &otherList) {
   length = otherList.length;
   list = new T[length];
   curr_size = length;
+  sorted = otherList.sorted;
+
   assert(list != nullptr);
 
   for (int i = 0; i < length; i++)
@@ -151,7 +205,8 @@ arrayListADT<T>::arrayListADT(const arrayListADT<T> &otherList) {
 }
 
 template <class T>
-const arrayListADT<T> &arrayListADT<T>::operator=(const arrayListADT<T> &otherList) {
+const arrayListADT<T> &arrayListADT<T>::
+operator=(const arrayListADT<T> &otherList) {
   if (this != &otherList) { // Avoid self copy
     length = otherList.length;
     max_size = otherList.max_size;
@@ -162,6 +217,7 @@ const arrayListADT<T> &arrayListADT<T>::operator=(const arrayListADT<T> &otherLi
     for (int i = 0; i < length; i++)
       list[i] = otherList.list[i];
     curr_size = length;
+    sorted = otherList.sorted;
   }
   return *this;
 }
